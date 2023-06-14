@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Modal</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+        <i class="fa-solid fa-xmark close-modal" data-bs-dismiss="modal"></i>
+        <div class="modal-body">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link nav-link-1 active" id="sms-tab" data-bs-toggle="tab" data-bs-target="#sms"
+                type="button" role="tab" aria-controls="sms" aria-selected="true">SMS Gönder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link nav-link-2" id="mail-tab" data-bs-toggle="tab" data-bs-target="#mail"
+                type="button" role="tab" aria-controls="mail" aria-selected="false">Mail Gönder</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="sms" role="tabpanel" aria-labelledby="sms-tab">
+              <div class="row m-3">
+                <div class="col-md-4">
+
+
+                  <div class="list-scrool">
+                    <div class="form-check select-all">
+                      <input class="form-check-input select-all-input" type="checkbox" value="" id="selectall">
+                      <label class="form-check-label" for="selectall">
+                        Tümünü Seç
+                      </label>
+                    </div>
+                    <div class="noUser">
+                      Kullanıcı bulunamadı.
+                    </div>
+                    <div class="list-scrool-group">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mt-2 mt-md-0">
+                  <div class="message-submit">
+                    <div class="message-submit-head">
+                      <div class="form-label">Otomatik SMS</div>
+                    </div>
+                    <div class="input-group ">
+                      <input type="text" class="form-control" placeholder="Ara" aria-label="Ara"
+                        aria-describedby="basic-addon1">
+                      <span class="input-group-text" id="basic-addon1"><i
+                          class="fa-solid fa-magnifying-glass"></i></span>
+                    </div>
+
+                    <div class="list-scrool list-scrool-2">
+
+                      <div class="list-scrool-group">
+                        <div class="auto-message" message-id="1">
+                          <p>Doğum Günü</p>
+                        </div>
+                        <div class="auto-message" message-id="2">
+                          <p>Doğum Günü 2</p>
+                        </div>
+                        <div class="auto-message" message-id="3">
+                          <p>Doğum Günü 3</p>
+                        </div>
+                        <div class="auto-message" message-id="4">
+                          <p>Doğum Günü 4</p>
+                        </div>
+                        <div class="auto-message" message-id="1">
+                          <p>Doğum Günü 5</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5 mt-2 mt-md-0">
+                  <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-12">
+                      <label for="subject" class="form-label">Konu</label>
+                      <input type="text" class="form-control" id="subject" required>
+                      <div class="valid-feedback">
+                        Bu alan boş geçilemez.
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div>
+                        <label for="message" class="form-label">Mesaj</label>
+                        <textarea class="form-control" id="message" rows="6" required></textarea>
+                      </div>
+                      <div class="valid-feedback">
+                        Bu alan boş geçilemez.
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="saveMessage">
+                        <label class="form-check-label" for="saveMessage">
+                          Mesajı Kaydet
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <button class="btn btn-primary col-md-12" type="submit">Gönder</button>
+                      <button class="btn btn-dark col-md-12 d-sm-none" data-bs-dismiss="modal">Kapat</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="mail" role="tabpanel" aria-labelledby="mail-tab">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row m-3">
+                  <div class="col-md-4">
+                    <div class="list-scrool">
+                      <div class="form-check select-all">
+                        <input class="form-check-input select-all-input" type="checkbox" value="" id="selectall2">
+                        <label class="form-check-label" for="selectall2">
+                          Tümünü Seç
+                        </label>
+                      </div>
+                      <div class="noUser">
+                        Kullanıcı bulunamadı.
+                      </div>
+                      <div class="list-scrool-group">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mt-2 mt-md-0">
+                    <div class="message-submit">
+                      <div class="message-submit-head">
+                        <div class="form-label">Otomatik Mail</div>
+                      </div>
+                      <div class="input-group ">
+                        <input type="text" class="form-control" placeholder="Ara" aria-label="Ara"
+                          aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1"><i
+                            class="fa-solid fa-magnifying-glass"></i></span>
+                      </div>
+
+                      <div class="list-scrool list-scrool-2">
+                        <div class="list-scrool-group">
+                          <div class="auto-message" message-id="1">
+                            <p>Doğum Günü</p>
+                          </div>
+                          <div class="auto-message" message-id="2">
+                            <p>Doğum Günü 2</p>
+                          </div>
+                          <div class="auto-message" message-id="3">
+                            <p>Doğum Günü 3</p>
+                          </div>
+                          <div class="auto-message" message-id="4">
+                            <p>Doğum Günü 4</p>
+                          </div>
+                          <div class="auto-message" message-id="1">
+                            <p>Doğum Günü 5</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5 mt-2 mt-md-0">
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-12">
+                        <label for="subject" class="form-label">Konu</label>
+                        <input type="text" class="form-control" id="subject" required>
+                        <div class="valid-feedback">
+                          Bu alan boş geçilemez.
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div>
+                          <label for="message" class="form-label">Mesaj</label>
+                          <textarea class="form-control" id="message" rows="6" required></textarea>
+                        </div>
+                        <div class="valid-feedback">
+                          Bu alan boş geçilemez.
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="saveMessage">
+                          <label class="form-check-label" for="saveMessage">
+                            Mesajı Kaydet
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn btn-primary col-md-12" type="submit">Gönder</button>
+                        <button class="btn btn-dark col-md-12 d-sm-none" data-bs-dismiss="modal">Kapat</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    $(".auto-message").click(function () {
+      $(this).addClass("active").siblings().removeClass("active");
+    })
+
+    $("#selectall, #selectall2").on("change", function () {
+      var allInputs = $(this).parent(".select-all").siblings(".list-scrool-group").children(".form-check").children("input");
+      if ($(this).is(":checked")) {
+        $(allInputs).attr("checked", true);
+      }
+      else {
+        $(allInputs).attr("checked", false);
+      }
+    })
+
+    var allUserGroup = $(".list-scrool-group");
+    for (let i = 0; i < allUserGroup.length; i++) {
+      var allUsers = $(allUserGroup[i]).children(".form-check");
+      var userInfo = $(allUserGroup[i]).siblings(".noUser");
+      var selectAllInput = $(allUserGroup[i]).siblings(".select-all");
+      if (allUsers.length == 0) {
+        $(userInfo).show();
+        $(selectAllInput).hide();
+      }
+      else {
+        $(userInfo).hide();
+        $(selectAllInput).show();
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    <title>SporSepeti</title>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="notif-section">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link nav-link-1 active" id="sms-tab" data-bs-toggle="tab" data-bs-target="#sms"
+                        type="button" role="tab" aria-controls="sms" aria-selected="true">Gönderilen SMS</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link nav-link-2" id="mail-tab" data-bs-toggle="tab" data-bs-target="#mail"
+                        type="button" role="tab" aria-controls="mail" aria-selected="false">Gönderilen Mail</button>
+                </li>
+            </ul>
+            <div class="custom-select">
+                <div class="current-day">
+                    <label for="days"> <i class="fa-regular fa-calendar-days"></i></label>
+                    <div class="current-range">Son 3 Gün</div>
+                    <i class="fa-solid fa-angle-down"></i>
+                </div>
+                <div class="select-options">
+                    <div class="current" date-range="3">Son 3 Gün</div>
+                    <div date-range="7">Son 1 Hafta</div>
+                    <div date-range="30">Son 1 Ay</div>
+                    <div date-range="365">Son 1 Yıl</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active py-3" id="sms" role="tabpanel" aria-labelledby="sms-tab">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">SMS Kredi Miktarı</div>
+                            <div class="circle-card circle-blue">
+                                <div class="circle total-sms">
+                                    12
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Gönderilen Toplam SMS</div>
+                            <div class="circle-card circle-red circle-sms">
+                                <div class="circle sended-sms">
+                                    12
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-6">
+                        <div class="info-card">
+                            <div class="info-title">Kalan SMS Kredisi</div>
+                            <div class="chart">
+                                <canvas id="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">E-posta Kredi Miktarı</div>
+                            <div class="info-text total-mail">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Kalan E-posta Kredisi</div>
+                            <div class="info-text remaining-mail">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Gönderilen Toplam E-posta</div>
+                            <div class="info-text sended-mail">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Başarısız Gönderilen SMS</div>
+                            <div class="info-text unsuccess-sms">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submitted-contents">
+                    <div class="submitted-content">
+                        <div class="submitted-head">
+                            <div>Alıcı: İlayda</div>
+                            <div class="submitted-infos">
+                                <div class="submitted-situation">Durum: <span class="btn btn-primary">Gönderildi</span>
+                                </div>
+                                <div class="submitted-date">
+                                    <div>13:55</div>
+                                    <div>07.06.2023</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="submitted-text">
+                            <div class="submitted-subject">
+                                Lorem Ipsum
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vitae placeat saepe
+                                molestias perferendis repellat optio assumenda laudantium vel, itaque nobis dicta
+                                tempora atque aperiam voluptas natus magni ut suscipit.</p>
+                        </div>
+                    </div>
+                    <div class="submitted-content">
+                        <div class="submitted-head">
+                            <div>Alıcı: İlayda</div>
+                            <div class="submitted-infos">
+                                <div class="submitted-situation">Durum: <span class="btn btn-primary">Gönderildi</span>
+                                </div>
+                                <div class="submitted-date">
+                                    <div>13:55</div>
+                                    <div>07.06.2023</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="submitted-text">
+                            <div class="submitted-subject">
+                                Lorem Ipsum
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vitae placeat saepe
+                                molestias perferendis repellat optio assumenda laudantium vel, itaque nobis dicta
+                                tempora atque aperiam voluptas natus magni ut suscipit.</p>
+                        </div>
+                    </div>
+                    <div class="submitted-content">
+                        <div class="submitted-head">
+                            <div><span>Alıcı:</span> <span class="submitted-person">İlayda, Arda, Dursun</span></div>
+                            <div class="submitted-infos">
+                                <div class="submitted-situation">Durum: <span class="btn btn-danger">Gönderilmedi</span>
+                                </div>
+                                <div class="submitted-date">
+                                    <div>13:55</div>
+                                    <div>07.06.2023</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="submitted-text">
+                            <div class="submitted-subject">
+                                Lorem Ipsum
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vitae placeat saepe
+                                molestias perferendis repellat optio assumenda laudantium vel, itaque nobis dicta
+                                tempora atque aperiam voluptas natus magni ut suscipit.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade py-3" id="mail" role="tabpanel" aria-labelledby="mail-tab">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">E-posta Kredi Miktarı</div>
+                            <div class="circle-card circle-blue">
+                                <div class="circle total-mail">
+                                    12
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Gönderilen Toplam E-posta</div>
+                            <div class="circle-card circle-red circle-mail">
+                                <div class="circle sended-mail">
+                                    12
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-6">
+                        <div class="info-card">
+                            <div class="info-title">Kalan E-posta Kredisi</div>
+                            <div class="chart">
+                                <canvas id="chart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">SMS Kredi Miktarı</div>
+                            <div class="info-text total-sms">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Kalan SMS Kredisi</div>
+                            <div class="info-text remaining-sms">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Gönderilen Toplam SMS</div>
+                            <div class="info-text sended-sms">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-title">Başarısız Gönderilen E-posta</div>
+                            <div class="info-text unsuccess-mail">
+                                542
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submitted-contents">
+                    <div class="submitted-content">
+                        <div class="submitted-head">
+                            <div>Alıcı: İlayda</div>
+                            <div class="submitted-infos">
+                                <div class="submitted-situation">Durum: <span class="btn btn-primary">Gönderildi</span>
+                                </div>
+                                <div class="submitted-date">
+                                    <div>13:55</div>
+                                    <div>07.06.2023</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="submitted-text">
+                            <div class="submitted-subject">
+                                Lorem Ipsum
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vitae placeat saepe
+                                molestias perferendis repellat optio assumenda laudantium vel, itaque nobis dicta
+                                tempora atque aperiam voluptas natus magni ut suscipit.</p>
+                        </div>
+                    </div>
+                    <div class="submitted-content">
+                        <div class="submitted-head">
+                            <div>Alıcı: İlayda</div>
+                            <div class="submitted-infos">
+                                <div class="submitted-situation">Durum: <span class="btn btn-primary">Gönderildi</span>
+                                </div>
+                                <div class="submitted-date">
+                                    <div>13:55</div>
+                                    <div>07.06.2023</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="submitted-text">
+                            <div class="submitted-subject">
+                                Lorem Ipsum
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vitae placeat saepe
+                                molestias perferendis repellat optio assumenda laudantium vel, itaque nobis dicta
+                                tempora atque aperiam voluptas natus magni ut suscipit.</p>
+                        </div>
+                    </div>
+                    <div class="submitted-content">
+                        <div class="submitted-head">
+                            <div><span>Alıcı:</span> <span class="submitted-person">İlayda, Arda, Dursun</span></div>
+                            <div class="submitted-infos">
+                                <div class="submitted-situation">Durum: <span class="btn btn-danger">Gönderilmedi</span>
+                                </div>
+                                <div class="submitted-date">
+                                    <div>13:55</div>
+                                    <div>07.06.2023</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="submitted-text">
+                            <div class="submitted-subject">
+                                Lorem Ipsum
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vitae placeat saepe
+                                molestias perferendis repellat optio assumenda laudantium vel, itaque nobis dicta
+                                tempora atque aperiam voluptas natus magni ut suscipit.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- Chart Js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

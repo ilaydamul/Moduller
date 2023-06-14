@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+        integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Chart Js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row g-3 my-4 pageStyle">
+            <div class="col-lg-5">
+                <div class="module-style bg-light">
+                    <div class="right-body-style">
+                        <div class="right-top-style" style="justify-content: space-between;">
+                            <h2>
+                                Eğitim Takvimi
+                            </h2>
+                        </div>
+                        <div class="calendar">
+                            <div class="calendar-top">
+                                <ul class="days">
+                                    <li class="day">PZT</li>
+                                    <li class="day">SAL</li>
+                                    <li class="day">ÇAR</li>
+                                    <li class="day">PER</li>
+                                    <li class="day">CUM</li>
+                                    <li class="day">CMR</li>
+                                    <li class="day">PZR</li>
+                                </ul>
+
+                                <ul class="dates"></ul>
+                            </div>
+                            <div class="calendar-bottom">
+                                <button class="prev-btn" onclick="prevMonth()">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+
+                                <span class="current-month-year"></span>
+
+                                <button class="next-btn" onclick="nextMonth()">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="calendar-cards">
+                            <div class="calendar-card">
+                                <div class="calendar-head">
+                                    <span class="calendar-day">11</span>
+                                    <div class="calendar-texts">
+                                        <p>Detail detail detail</p>
+                                    </div>
+                                </div>
+                                <span class="calendar-clock">10:23</span>
+                            </div>
+                            <div class="calendar-card">
+                                <div class="calendar-head">
+                                    <span class="calendar-day">11</span>
+                                    <div class="calendar-texts">
+                                        <p>Detail detail detail</p>
+                                    </div>
+                                </div>
+                                <span class="calendar-clock">10:23</span>
+                            </div>
+                            <div class="calendar-card">
+                                <div class="calendar-head">
+                                    <span class="calendar-day">11</span>
+                                    <div class="calendar-texts">
+                                        <p>Detail detail detail</p>
+                                    </div>
+                                </div>
+                                <span class="calendar-clock">10:23</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="module-style bg-light">
+                    <div>
+                        <h2>
+                            Üyeler
+                        </h2>
+                    </div>
+                    <div class="left-body-style">
+                        <div class="teacher-item">
+                            <div>
+                                Şevket Arda Mülazimoğlu
+                            </div>
+                            <div>
+                                #123456
+                            </div>
+                        </div>
+                        <div class="teacher-item">
+                            <div>
+                                Şevket Arda Mülazimoğlu
+                            </div>
+                            <div>
+                                #123456
+                            </div>
+                        </div>
+                        <div class="teacher-item">
+                            <div>
+                                Şevket Arda Mülazimoğlu
+                            </div>
+                            <div>
+                                #123456
+                            </div>
+                        </div>
+                        <div class="teacher-item">
+                            <div>
+                                Şevket Arda Mülazimoğlu
+                            </div>
+                            <div>
+                                #123456
+                            </div>
+                        </div>
+                        <div class="teacher-item">
+                            <div>
+                                Şevket Arda Mülazimoğlu
+                            </div>
+                            <div>
+                                #123456
+                            </div>
+                        </div>
+
+                        <div class="teacher-item">
+                            <div>
+                                Şevket Arda Mülazimoğlu
+                            </div>
+                            <div>
+                                #123456
+                            </div>
+                        </div>
+                        <div class="teacher-item">
+                            <div>
+                                Şevket Arda Mülazimoğlu
+                            </div>
+                            <div>
+                                #123456
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+        integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
