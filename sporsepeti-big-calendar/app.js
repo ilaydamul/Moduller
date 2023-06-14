@@ -127,12 +127,18 @@ function createCalendar(date) {
 
 // Previous month
 function prevMonth() {
+  $(".fc-prev-button").click();
   date = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate());
   createCalendar(date);
 }
 
+// $('.fc-next-button').on("click",function(){
+//   nextMonth();
+// })
+
 // Next month
 function nextMonth() {
+  $(".fc-next-button").click();
   date = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate());
   createCalendar(date);
 }
@@ -156,8 +162,17 @@ document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
+    // slotDuration: '01:00:00',
+    allDaySlot: false,
+    slotLabelInterval: "03:00:00",
+    slotLabelFormat: {
+      hour: "2-digit",
+      minute: "2-digit",
+      omitZeroMinute: false,
+      meridiem: "short",
+    },
     headerToolbar: {
-      left: "myCustomButton dayGridMonth,dayGridWeek,dayGridDay",
+      left: "myCustomButton dayGridMonth,timeGridWeek,timeGridDay",
       center: "today,prev,title,next",
       right: "addDate",
     },
@@ -174,76 +189,70 @@ document.addEventListener("DOMContentLoaded", function () {
         click: function () {},
       },
     },
-    buttonIcons: {},
-    dateClick: function (info) {
-      calendar.gotoDate(info.date);
-    },
-    views: {
-      timeGridWeek: {
-        slotDuration: "00:30:00", // Slot süresi 30 dakika
-        slotLabelInterval: { hours: 1 }, // Her saat başında etiketleme yapılır
-      },
-      timeGridDay: {
-        slotDuration: "00:30:00",
-        slotLabelInterval: { hours: 1 },
-      },
-    },
+    // dateClick: function (info) {
+    //   calendar.gotoDate(info.date);
+    // },
+    // slotLabelFormat: [
+    //   { hour: "numeric", minute: "2-digit", meridiem: "short" }, // saat formatı
+    // ],
     locale: "tr",
+    slotDuration: "01:00:00",
     droppable: true,
     firstDay: 1,
     events: [
       {
-        title: "{{item.title}}",
-        start: "13.06.2023",
-        end: "15.06.2023",
-        allDay: "true",
-        display: "background",
-      },
-      {
         title: "Doğum günü partisi",
-        start: new Date(2023, 5, 15), // 15 Ocak 2023
-        end: new Date(2023, 5, 16), // 16 Ocak 2023
-      },
-      {
-        title: "Doğum günü partisi",
-        start: new Date(2023, 5, 15), // 15 Ocak 2023
-        end: new Date(2023, 5, 16), // 16 Ocak 2023
+        start: new Date(2023, 5, 15),
+        end: new Date(2023, 5, 16),
       },
       {
         title: "Toplantı",
-        start: new Date(2023, 5, 18, 9, 0), // 10 Şubat 2023, saat 09:00
-        end: new Date(2023, 5, 20, 12, 5), // 10 Şubat 2023, saat 12:00
-      },
-      {
-        title: "Tatil",
-        start: new Date(2023, 5, 24, 9, 0), // 10 Şubat 2023, saat 09:00
-        end: new Date(2023, 5, 24, 9, 3), // 10 Şubat 2023, saat 12:00
-        description: "aaa",
-        allDay: true,
+        start: new Date(2023, 5, 18, 9, 0),
+        end: new Date(2023, 5, 20, 12, 5),
       },
       {
         title: "Artvin",
         start: "2023-06-28",
         end: "2023-06-28T12:30:00",
-        description: "aaa",
       },
     ],
     eventDidMount: function (info) {
       // console.log(info.event.extendedProps);
       // {description: "Lecture", department: "BioChemistry"}
     },
-    eventContent: function(arg) {
-      return {
-        html: `<div class="event-wrapper">
-                  <div class="event-title">${arg.event.title}</div>
-                  <div class="event-edit-icon">
-                    <i class="fa fa-edit"></i>
-                  </div>
-                </div>`,
-        classNames: ['custom-event-class']
-      };
+    eventContent: function (arg) {
+      console.log(arg)
+      if (arg.event.start.getDate() === arg.view.currentStart.getDate()) {
+
+        return { html: "" };
+      } else {
+        // Değilse başlık kısmını boş bırakır
+        return {
+          html: `<div class="event-wrapper">
+                    <div class="event-title">${arg.event.title}</div>
+                    <div class="event-edit-icon">
+                      <i class="fa fa-edit"></i>
+                    </div>
+                  </div>`,
+        };
+      }
     },
   });
 
   calendar.render();
 });
+
+$("body").on("click", ".fc-next-button", function () {
+  date = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate());
+  createCalendar(date);
+});
+
+$("body").on("click", ".fc-prev-button", function () {
+  date = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate());
+  createCalendar(date);
+});
+
+
+$(".update-date").click(function(){
+  
+})

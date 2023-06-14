@@ -173,17 +173,27 @@ hr {
 
 .fc .fc-button-group .fc-button-primary:not(:disabled).fc-button-active,
 .fc .fc-button-group .fc-button-primary:not(:disabled):active,
-.fc .fc-addDate-button{
+.fc .fc-addDate-button {
     background-color: #0E70FE;
-    border-radius: 1rem;
     border: none;
 }
-.fc .fc-addDate-button:hover,.fc .fc-addDate-button:active{
-    color: #0E70FE!important;
-    background-color: #bdd8ff!important;
+
+.fc-addDate-button {
+    border-radius: 3rem !important;
 }
+
+.fc .fc-addDate-button:hover,
+.fc .fc-addDate-button:active {
+    color: #0E70FE !important;
+    background-color: #bdd8ff !important;
+}
+
 .fc .fc-daygrid-day-number {
     padding: 0px 2px;
+}
+
+.fc .fc-timegrid-slot-minor {
+    border: none;
 }
 
 .fc-button-group {
@@ -211,8 +221,6 @@ hr {
     background-color: #bdd8ff;
     border: none;
     border-radius: .5rem;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.9rem;
 }
 
 .fc .fc-button-group>.fc-button {
@@ -245,6 +253,10 @@ hr {
 
 }
 
+/* .fc-scrollgrid-section-header{
+    border-bottom: 1px solid var(--fc-border-color);
+} */
+
 .fc-scrollgrid-sync-inner {
     padding: .75rem 0;
 }
@@ -276,6 +288,79 @@ hr {
     padding: 0;
 }
 
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-direction-rtl .fc-daygrid-event.fc-event-start {
+    background: #7cabef;
+    border: none;
+}
+
+
+.event-wrapper {
+    position: relative;
+    width: 100%;
+    color: white;
+}
+
+.fc-timeGridWeek-view .event-edit-icon {
+    position: absolute;
+    right: 0px;
+    top: -14px;
+    cursor: pointer;
+}
+
+
+.fc-dayGridMonth-view .event-title {
+    margin-right: 1.4rem;
+    overflow: hidden;
+}
+
+.fc-dayGridMonth-view .event-edit-icon {
+    position: absolute;
+    right: 5px;
+    top: -1px;
+}
+
+.fc-timegrid-event-harness-inset .fc-timegrid-event,
+.fc-timegrid-event.fc-event-mirror,
+.fc-timegrid-more-link {
+    border-radius: 1rem;
+    padding: 0.5rem 0.5rem;
+    /* padding-right: 0.9rem; */
+    padding-top: 1.3rem;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.20em;
+}
+
+/* .fc .fc-scroller-liquid-absolute {
+    overflow: hidden;
+} */
+
+.fc .fc-scroller-liquid-absolute::-webkit-scrollbar {
+    width: 8px;
+    height: 3px;
+}
+
+.fc .fc-scroller-liquid-absolute::-webkit-scrollbar-track {
+    background-color: rgba(204, 204, 204, 0.329);
+}
+
+.fc .fc-scroller-liquid-absolute::-webkit-scrollbar-thumb {
+    background: #9e9e9e;
+}
+
+.fc .fc-scroller-liquid-absolute::-webkit-scrollbar-thumb:hover {
+    background: #474747;
+}
+
+.fc-scrollgrid-section-header .fc-scroller {
+    overflow: hidden !important;
+}
+
+.fc .fc-timegrid-col.fc-day-today {
+    background-color: #c7deff !important;
+}
 
 
 
@@ -291,6 +376,33 @@ hr {
     }
 }
 
+/* DATE MODAL */
+.date-modal {
+    display: inline-block;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.date-infos>div {
+    border: 1px solid var(--fc-border-color);
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: .9rem;
+}
+
+.date-modal-title {
+    font-size: 1.2rem;
+}
+
+.date-info-title {
+    color: #0E70FE;
+}
+
+/* .date-infos>div:not(:last-child){
+    margin-bottom: 1rem;
+} */
 
 @media screen and (max-width:480px) {
     .calendar-texts {
