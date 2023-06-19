@@ -122,6 +122,8 @@ $(".features-dev>div").click(function () {
   $(this).addClass("active-feature").siblings().removeClass("active-feature");
 });
 
+
+
 $(".features-dev>div:first-child").addClass("active-feature");
 
 $(document).ready(function () {
