@@ -58,21 +58,6 @@ $(".openCat").click(function () {
     $(this).children(".show-categories").toggleClass("turn-180");
 });
 
-//BLOG DETAY İÇERİK AÇ KAPA
-
-$(document).ready(function() {
-    $(".blog-ingredients a").click(function () {
-
-
-        // history.replaceState("", document.title, window.location.pathname + window.location.search);
-
-
-        $(this)
-        .addClass("active-ingredient")
-        .siblings()
-        .removeClass("active-ingredient");
-    });
-})
 
 //HEADER STICKY
 window.onscroll = function () {
