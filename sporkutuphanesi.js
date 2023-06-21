@@ -15,42 +15,6 @@ $(".scrollPopular").click(function (event) {
     }
 });
 
-// BLOG SLICK SLIDER
-$(".blog-categories").slick({
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 2,
-    prevArrow: '<i class="fa fa-chevron-left icon-left-big"></i>',
-    nextArrow: '<i class="fa fa-chevron-right icon-right-big"></i>',
-    responsive: [{
-        breakpoint: 1024,
-        settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-        },
-    },
-        {
-            breakpoint: 578,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 2,
-                arrows: false
-            },
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                arrows: false
-            },
-        }],
-});
-
-
-
 //BLOG CATEGORY ICONS
 $(".openCat").click(function () {
     $(this).siblings(".categories-group").slideToggle();

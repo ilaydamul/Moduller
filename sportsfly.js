@@ -20,16 +20,16 @@ function myFunction() {
 //HEADER BURGER
 
 $(".header-burger").click(function () {
-  a();
+  toggleMobileMenu();
 });
 
 $(".mobile-header").click(function (e) {
   if ($(e.target).hasClass("mobile-header")) {
-    a();
+    toggleMobileMenu();
   }
 });
 
-function a() {
+function toggleMobileMenu() {
   $(".header-burger").toggleClass("active");
   $(".header-burger-main").toggleClass("opacityBurger");
   $(".mobile-header").toggle(

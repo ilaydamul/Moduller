@@ -128,7 +128,7 @@ section {
     gap: 1.3rem;
 }
 
-.header-links a {
+.header-links>div>a {
     color: #171921;
     transition: .3s ease;
     position: relative;
@@ -141,11 +141,11 @@ section {
     cursor: context-menu;
 }
 
-.header-links a>span {
+.header-links>div>a>span {
     position: relative;
 }
 
-.header-links a>span::after {
+.header-links>div>a>span::after {
     content: "";
     position: absolute;
     width: 20px;
@@ -157,7 +157,7 @@ section {
     opacity: 0;
 }
 
-.header-links a:hover>span::after,
+.header-links>div>a:hover>span::after,
 .header-links .dropdown:hover span::after {
     opacity: 1;
     left: 38%;
@@ -1577,12 +1577,12 @@ p {
     object-position: top;
 }
 
-.sporsepeti-card:hover {
+.sporsepeti-card:not(.disabled):hover {
     transform: scale(1.1);
     box-shadow: 0px 4px 16px 0px #21212114;
 }
 
-.sporsepeti-card:hover img {
+.sporsepeti-card:not(.disabled):hover img {
     transform: scale(1.05);
 }
 
