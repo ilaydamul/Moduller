@@ -101,7 +101,7 @@ $(document).ready(function() {
         })
 
 
-    $(".banner-category").click(function() {
+    $(".banner-category,.branch-icon").click(function() {
         goBlogs();
         var clickedBlog = $(this).attr("href").split("=")[1];
         thisCategory = clickedBlog;
@@ -131,6 +131,9 @@ $(document).ready(function() {
     }
     goBlogs();
 })
+
+// SİTE AÇILINCA MENU İTEMLERİNİ MOBİLE MENU YAPMA
+$(".mobile-links").html($(".header-links").html());
 
 // ARAMA
 function search() {

@@ -168,7 +168,7 @@ a {
 }
 
 .banner-logo img {
-    width: 200px;
+    width: 180px;
     object-fit: scale-down;
 }
 
@@ -503,7 +503,7 @@ a {
 }
 
 .blog-categories .slick-arrow:not(.slick-disabled) {
-    color: #005CF8;
+    color: #00b2ff;
 }
 
 
@@ -526,14 +526,16 @@ a {
 .active-category,
 .blog-categories .blog-category:hover {
     /*color: #0F74FA;*/
-    color: #005CF8;
+    /* color: #005CF8; */
+    color: #00B2FF;
 }
 
 .active-category img,
 .blog-categories .blog-category:hover img {
     /*filter: invert(20%) sepia(100%) saturate(1300%) hue-rotate(180deg) brightness(115%) contrast(135%);*/
     /*filter: invert(30%) sepia(1710%) saturate(750%) hue-rotate(260deg) brightness(115%) contrast(135%)!important;*/
-    filter: invert(60%) sepia(1300%) saturate(10290%) hue-rotate(205deg) brightness(115%) contrast(135%) !important;
+    /* filter: invert(60%) sepia(1300%) saturate(10290%) hue-rotate(205deg) brightness(115%) contrast(135%) !important; */
+    filter: invert(60%) sepia(1300%) saturate(6590%) hue-rotate(201deg) brightness(145%) contrast(135%) !important;
 }
 
 /* TÜM BLOG KARTLARI */
