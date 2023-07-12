@@ -63,6 +63,10 @@ section {
     color: #1172FC;
 }
 
+.sk-header,.sk-footer,.sd-header,.sd-footer {
+    display: none;
+}
+
 /* PAGE SCROLLBAR */
 ::-webkit-scrollbar {
     width: 10px;
@@ -130,11 +134,8 @@ section {
 
 .header-links>div>a {
     color: #171921;
-    transition: .3s ease;
     position: relative;
     overflow: hidden;
-    /*padding: 2.5rem 0px;*/
-    /*padding: 2.5rem 0 2.6rem;*/
 }
 
 .header-links .dropdown>a {
@@ -143,6 +144,7 @@ section {
 
 .header-links>div>a>span {
     position: relative;
+    transition: .3s ease;
 }
 
 .header-links>div>a>span::after {
@@ -183,22 +185,15 @@ section {
 .dropdown {
     position: relative;
     padding: 2rem 0;
-    /*padding: 2.5rem 0 2.6rem;*/
 }
 
 
 .dropdown>a i {
     margin-left: .1rem;
+    transition: .3s ease;
 }
 
 .dropdown-links {
-    /*position: absolute;*/
-    /*left: -5%;*/
-    /*top: 26px;*/
-    /*background: #fffffff7;*/
-    /*width: 110%;*/
-    /*border-radius: 0.4rem;*/
-    /*padding-top: 0.3rem;*/
 
     position: absolute;
     left: -15%;
@@ -206,13 +201,11 @@ section {
     background: white;
     width: 130%;
     border-radius: 0 0 0.4rem 0.4rem;
-    /*padding-top: 0.3rem;*/
     box-shadow: 0px 4px 5px 0px #cfcfcf;
     transition: .2s ease;
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    /*display: none;*/
 }
 
 .header-links .dropdown-links a {
@@ -236,11 +229,9 @@ section {
 }
 
 .dropdown:hover .dropdown-links {
-    /*top: 78px;*/
     opacity: 1;
     visibility: visible;
     transform: translate(0px, 10px);
-
 }
 
 /* HEADER LANGUAGE */
@@ -261,19 +252,23 @@ section {
 .lang-dp-menu {
     position: absolute;
     right: -10%;
-    background: #1864EE;
+    background: #F9F9F9;
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 120%;
-    z-index: 10;
-    /* bottom: -4.6rem; */
-
+    border-radius: 4px;
     display: none;
+    top: 40px;
+    z-index: 30;
 }
 
 .lang-dp-menu a {
     padding: 0.4rem 0;
+}
+
+.lang-dp-menu>a:not(:last-child){
+    margin-bottom: .25rem;
 }
 
 /* BANNER */
@@ -380,8 +375,6 @@ p {
 
 /* Avantajlarımız */
 .advantages {
-    /*display: flex;*/
-    /*justify-content: space-between;*/
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -390,7 +383,6 @@ p {
 .advantage {
     border-radius: .5rem;
     overflow: hidden;
-    /*width: 32%;*/
     width: 100%;
 }
 
@@ -1683,6 +1675,8 @@ p {
 
 @media screen and (max-width:992px) {
 
+    
+
     .sporsepeti-card {
         width: 46.7%;
     }
@@ -1882,16 +1876,14 @@ p {
     /* AVANTAJLARIMIZ */
 
     .advantages {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
         justify-content: center;
+        flex-wrap: wrap;
     }
-
-
-    /*.advantage {*/
-    /*    width: 44%;*/
-    /*}*/
-
-
+    
+    .advantage {
+        width: 46%;
+    }
 
     .advantage img {
         height: 200px;
@@ -2107,9 +2099,6 @@ p {
 }
 
 @media screen and (max-width:576px) {
-    .advantages {
-        grid-template-columns: repeat(1, 1fr);
-    }
     .mobile-header {
         top: 108px;
     }

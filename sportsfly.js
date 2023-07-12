@@ -5,20 +5,14 @@ window.onscroll = function () {
 var header = document.getElementById("header");
 var sticky = header.offsetTop;
 function myFunction() {
-  // console.log(window.pageYOffset);
-  // console.log(sticky);
   if (window.pageYOffset > sticky) {
     header.classList.add("sticky");
-    // if (window.innerWidth > 992) {
-    //     header.classList.add("sticky");
-    // }
   } else {
     header.classList.remove("sticky");
   }
 }
 
 //HEADER BURGER
-
 $(".header-burger").click(function () {
   toggleMobileMenu();
 });
@@ -32,19 +26,11 @@ $(".mobile-header").click(function (e) {
 function toggleMobileMenu() {
   $(".header-burger").toggleClass("active");
   $(".header-burger-main").toggleClass("opacityBurger");
-  // $(".mobile-header").toggle(
-  //   "slide",
-  //   {
-  //     direction: "left",
-  //   },
-  //   500
-  // );
   $(".mobile-header").slideToggle(200);
 }
 
-//   LANGUAGE OPEN
+// LANGUAGE OPEN
 $(".lang-dp").click(function () {
-  // $(this).siblings(".lang-dp-menu").slideToggle();
   $(this)
     .siblings(".lang-dp-menu")
     .slideToggle("", function () {
@@ -85,6 +71,7 @@ $(".solution-cats").slick({
   ],
 });
 
+// ÇÖZÜMLER 
 $(".solution-items").slick({
   dots: false,
   arrows: false,
@@ -118,7 +105,7 @@ function openFaq() {
 
 openFaq();
 
-// ÖZELLİKLER DEĞİŞİM
+// ÖZELLİKLERİN DEĞİŞMESİ
 $(".features-dev>div").click(function () {
   $(this).addClass("active-feature").siblings().removeClass("active-feature");
 });
@@ -127,6 +114,8 @@ $(".features-dev>div:first-child").addClass("active-feature");
 
 $(document).ready(function () {
   new WOW().init();
+  // SporKütüphanesi ve Dijital Çözümler Header/Footer silme.
+  $(".sk-header, .sk-footer, .sd-header, .sd-footer").remove();
 });
 
 // FOOTER LANGUAGE
@@ -156,3 +145,5 @@ function checkPosition() {
   } else {
   }
 }
+
+

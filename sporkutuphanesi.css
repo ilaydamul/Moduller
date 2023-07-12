@@ -36,7 +36,7 @@ html {
 }
 
 section {
-    z-index: 1;
+    z-index: 2;
     position: relative;
     background-color: white;
 }
@@ -59,7 +59,12 @@ a {
     transition: .3s ease;
 }
 
-
+.sf-header,
+.sf-footer,
+.sd-header,
+.sd-footer {
+    display: none;
+}
 
 /* PAGE SCROLLBAR */
 ::-webkit-scrollbar {
@@ -144,9 +149,8 @@ a {
 
 /* BANNER */
 .banner {
-    /*background: url(https://storage.acerapps.io/app-1287/bannerbg.png);*/
-    background: url(https://storage.acerapps.io/app-1287/sporkutuphanesibanner.webp);
-
+    background: url(https://storage.acerapps.io/app-1358/images/search/sporsepetibanner.webp);
+    z-index: 10;
     color: white;
     text-align: center;
     background-size: cover;
@@ -165,6 +169,8 @@ a {
 
 .banner .container {
     padding: 2rem 0;
+    min-height: 500px;
+    height: 100%;
 }
 
 .banner-logo img {
@@ -172,18 +178,11 @@ a {
     object-fit: scale-down;
 }
 
-.banner-logo {
-    /*margin-bottom: 3rem;*/
-    margin-top: 2rem;
-
-}
-
 .banner-container {
-    max-width: 620px;
+    max-width: 100%;
     margin: 0 auto;
     height: 100%;
     padding: 0 1rem;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -191,7 +190,12 @@ a {
 
 .search {
     position: relative;
-    margin-top: 3rem;
+    margin-top: 2rem;
+}
+
+.search-cont {
+    max-width: 620px;
+    margin: 0 auto;
 }
 
 .search input {
@@ -579,10 +583,8 @@ a {
 /* HABER BÜLTENİ */
 .news-bg {
     background-color: #171921;
-    /* background: linear-gradient(to right, #36383F, #181A22);
-    color: white; */
     padding: 4rem 0;
-
+    z-index: 1;
     position: relative;
 }
 
@@ -1236,6 +1238,10 @@ a {
         width: 200px;
     }
 
+    .search-cont {
+        max-width: 500px;
+    }
+
     /* HEADER */
     .header-btn {
         display: none;
@@ -1247,10 +1253,6 @@ a {
 
     .header-items {
         justify-content: space-between;
-    }
-
-    #header {
-        background: linear-gradient(to right, #36383F, #181A22);
     }
 
     .whiteLogo {
@@ -1289,7 +1291,7 @@ a {
         width: 2rem;
         height: 3px;
         border-radius: 1rem;
-        background: white;
+        background: rgb(0, 0, 0);
         transition: 0.3s ease;
     }
 
@@ -1299,18 +1301,18 @@ a {
         width: 2rem;
         height: 3px;
         border-radius: 1rem;
-        background: white;
+        background: rgb(0, 0, 0);
         position: absolute;
         transition: 0.3s ease;
         left: 0;
     }
 
     .burger-icon::before {
-        top: 1.5rem;
+        top: 1.6rem;
     }
 
     .burger-icon::after {
-        bottom: 1.5rem;
+        bottom: 1.6rem;
     }
 
 
@@ -1330,8 +1332,7 @@ a {
         position: fixed;
         z-index: 10;
         width: 100%;
-        height: 100%;
-        top: 0;
+        top: 80px;
         left: 0;
         background: #36383f61;
     }
@@ -1344,13 +1345,10 @@ a {
         background: white;
         padding: 1rem;
         height: 100%;
+        width: 100%;
         display: inline-block;
+        box-shadow: 0 5px 6px -2px #8989891f;
     }
-
-    /* .mobile-header-menu .header-logo {
-        margin-bottom: 2rem;
-        display: block;
-    } */
 
     .mobile-links a {
         display: block;
@@ -1384,11 +1382,6 @@ a {
     .popular-blogs {
         flex-direction: column;
         gap: 1rem;
-    }
-
-    .opacityBurger {
-        opacity: 0;
-        visibility: hidden;
     }
 
     .popular-blogs>div {
@@ -1560,6 +1553,18 @@ a {
 }
 
 @media screen and (max-width:480px) {
+
+    .burger-icon::before,
+    .burger-icon::after {
+        left: 6.4px;
+    }
+
+    .branch-menu-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+
     .header-logo img {
         width: 160px;
     }
