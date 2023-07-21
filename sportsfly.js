@@ -38,56 +38,7 @@ $(".lang-dp").click(function () {
     });
 });
 
-// ÇÖZÜMLER
-$(".solution-cats").slick({
-  dots: false,
-  arrows: false,
-  infinite: true,
-  speed: 300,
-  slidesToShow: 7,
-  slidesToScroll: 1,
-  focusOnSelect: true,
-  asNavFor: ".solution-items",
-  responsive: [
-    {
-      breakpoint: 998,
-      settings: {
-        slidesToShow: 5,
-      },
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-  ],
-});
 
-// ÇÖZÜMLER 
-$(".solution-items").slick({
-  dots: false,
-  arrows: false,
-  infinite: true,
-  speed: 300,
-  fade: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  asNavFor: ".solution-cats",
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {},
-    },
-  ],
-});
 
 function openFaq() {
   // SSS

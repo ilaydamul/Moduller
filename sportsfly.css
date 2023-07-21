@@ -16,11 +16,14 @@
     font-weight: 500;
 }
 
+
+
 /* GENERAL */
 body {
     background-color: white;
     /*font-family: "Gilroy Regular",sans-serif;*/
     font-family: 'Sofia Pro', sans-serif;
+    font-display: swap;
 }
 
 
@@ -63,7 +66,7 @@ section {
     color: #1172FC;
 }
 
-.sk-header,.sk-footer,.sd-header,.sd-footer {
+.sk-header,.sk-footer {
     display: none;
 }
 
@@ -1880,7 +1883,7 @@ p {
         justify-content: center;
         flex-wrap: wrap;
     }
-    
+
     .advantage {
         width: 46%;
     }
