@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- Slick Slide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Title</title>
+
+
+    <style>
+        .modal-shadow {
+            background-color: #0000004d;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: .2s linear;
+        }
+
+        .modal-shadow.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fModal {
+            max-width: 500px;
+            background-color: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            text-align: center;
+            margin: 15px 15px;
+            position: relative;
+            top: -770px;
+            transition: .5s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+
+        .fModal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .5rem 2rem;
+            color: white;
+            background-color: #db0617;
+        }
+
+        .fModal-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .fModal-clear {
+            width: 20px;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .fModal-content {
+            padding: 1rem;
+        }
+
+        .fModal-content p {
+            margin-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+            font-size: .9rem;
+        }
+
+        .modal-shadow.active .fModal {
+            transform: translateY(0px);
+            transform: translateY(770px);
+        }
+
+        .fModal-price {
+            color: #db0617;
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-shadow">
+        <div class="fModal">
+            <div class="fModal-header">
+                <div class="fModal-clear"></div>
+                <div class="fModal-title">Title</div>
+                <div class="close-modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div class="fModal-content">
+                <div class="food-image">
+                    <img src="https://storage.acerapps.io/app-1320/blueberry.webp" alt="">
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto rem animi id velit eos reiciendis
+                    maxime mollitia eligendi odio. Error.</p>
+                <div class="fModal-price-cont">
+                    Price: <span class="fModal-price">18,90 ₼</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="click text-center mt-5">
+        Click
+    </div>
+
+
+
+
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Slick Slide -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+    <script>
+        $(".click").click(function () {
+            openFoodModal();
+        })
+
+        function openFoodModal() {
+            $(".modal-shadow").addClass("active");
+        }
+        $(".close-modal").click(function () {
+            $(".modal-shadow").removeClass("active");
+        })
+    </script>
+
+</body>
+
+</html>
