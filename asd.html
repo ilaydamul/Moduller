@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+        var a = [{
+            "title": "Calacatta Extra",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Calacatta Lucina",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Calacatta Lucina Extra",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Calacatta Oro",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Cappuccino Onyx",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Caramel Grey",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Carrara",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Cipollino",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Cocacola Onyx",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Cora Black",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Covelano Macchia Vachia",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Cream Lucida",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Crema Bella",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Crema Extra",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Crema Golden",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Denizli Travertine",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Denizli Travertine CC",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+
+        {
+            "title": "Dolomite Spider",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Emerald Green",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Forest Green Patinato",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Green Diabaz",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Grey Diano Vein Cut",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Grey Dove",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Grey Serpegiante",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Honey Onyx",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Jaguar",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Lilac",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Lilac M",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Marmara",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Matrix Patine",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Nero Gricio",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Nero Marquina",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Nero Zimbabwe",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Noche Travertine Vein Cut",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Ottoman Beige",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Palissandro Bronze",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Palissandro Classic",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Pantera Bianca",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Pantera Grigio",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Perletto",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Pietra Grey",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Pink Onyx",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Rosalia Light",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Rosalia Pink",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Rosso Levanto",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Silver Sky",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+
+        {
+            "title": "Starlica Onyx",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Tundra Blue",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Turquazonite",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Turtle",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Verde Guatamala",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Verde Olio",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Violet",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "White Onyx",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        },
+        {
+            "title": "Yellow Travertine",
+            "image": "https://storage.acerapps.io/app-1421/images/produtcs/affumicato.webp"
+        }
+        ]
+
+
+        $(a).each(function (i, item) {
+
+            var linkTitle = item.title.toLowerCase().replace(" ", "-");
+
+
+            item.image = "https://storage.acerapps.io/app-1421/images/produtcs/" + linkTitle + ".webp";
+           
+        })
+
+        console.log(JSON.stringify(a));
+
+
+    </script>
+</body>
+
+</html>

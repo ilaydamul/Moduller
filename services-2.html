@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>Servis Kartları</title>
+    <style>
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+
+        }
+
+        .service-card {
+            width: calc(100%/3 - 2rem);
+            text-align: center;
+        }
+
+        .service-card h3 {
+            color: #ef6b2d;
+        }
+
+        .service-icon {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+            background-color: #ef6b2d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: .5rem;
+            /* box-shadow: 0px 0px 10px 0px #ef6b2d; */
+            /* box-shadow: inset 0px 0px 10px 0px #ef6b2d, 0px 0px 19px 3px #ef6b2d; */
+        }
+
+        .service-icon img {
+            width: 85px;
+            object-fit: contain;
+            filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(13%) hue-rotate(117deg) brightness(107%) contrast(103%);
+            /* filter: brightness(0) saturate(100%) invert(65%) sepia(43%) saturate(6848%) hue-rotate(344deg) brightness(98%) contrast(91%); */
+
+        }
+
+        @media screen and (max-width:1200px) {
+            .service-card {
+                width: calc(50% - 2rem);
+            }
+
+        }
+
+        @media screen and (max-width:768px) {
+            .services {
+                gap: 1rem;
+            }
+
+            .service-card {
+                width: 100%;
+            }
+
+            .service-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .service-icon img {
+                width: 65px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mt-5"></div>
+
+    <section>
+        <div class="container">
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="services/choice.png" alt="Stone Selection">
+                    </div>
+                    <h3>Stone Selection</h3>
+                    <p>We carefully select a wide range of marble products
+                        for our clients.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="services/factory.png" alt="Production">
+                    </div>
+                    <h3>Production</h3>
+                    <p>Marblexpo is equipped with advanced machinery and
+                        skilled craftsmen to offert you the best result.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="services/box.png" alt="Lashing">
+                    </div>
+                    <h3>Lashing</h3>
+                    <p>We understand the fragility of marble and
+                        take extra care to prevent any damage or
+                        breakage during transit, using appropriate
+                        cushioning and wrapping.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="services/contract.png" alt="Documentation">
+                    </div>
+                    <h3>Documentation</h3>
+                    <p>Our dedicated team takes care of preparing
+                        and organizing all the required paperwork,
+                        including invoices, shipping labels, customs
+                        documents, and certificates of origin,
+                        ensuring compliance with international
+                        shipping standards and regulations.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="services/transportation.png" alt="Transportatioin">
+                    </div>
+                    <h3>Transportatioin</h3>
+                    <p>Our extensive network enables us to offer
+                        competitive shipping rates and choose the
+                        most suitable mode of transport for each
+                        shipment, depending on its size, weight, and
+                        destination.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+</body>
+
+</html>
