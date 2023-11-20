@@ -1,0 +1,43 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.loader {
+    position: relative;
+    display: flex;
+}
+
+.loader .blackDiv {
+    width: 33.33%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.loader .blackDiv .innerDiv {
+    width: 100%;
+    height: 100vh;
+    background-color: #3b3b3b;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1.5s ease-in-out;
+}
+
+.loader img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s ease;
+}
+
+.animDiv {
+    left: 100rem !important;
+}
+
+.opacity {
+    opacity: 0;
+}

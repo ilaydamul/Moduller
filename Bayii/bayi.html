@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>Title</title>
+
+
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .dealer-map-cont {
+            overflow-x: auto;
+        }
+
+        .dealer-map {
+            background: url(https://static.ticimax.cloud/53123//uploads/images/all/turkey-map-2.png);
+            width: 100%;
+            /* height: 100vh; */
+            height: 610px;
+            
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            min-width: 1200px;
+        }
+
+        .marker {
+            position: absolute;
+            width: 26px;
+            height: 39px;
+
+        }
+
+        .marker-content {
+            background-color: #29A2DF;
+            color: white;
+            padding: 0.5rem;
+            position: absolute;
+            top: 40px;
+            width: 260px;
+            display: none;
+        }
+
+        .marker-title {
+            font-weight: 500;
+            font-size: 1.25rem;
+        }
+
+        .marker-btn {
+            border: none;
+            background-color: white;
+            color: #29A2DF;
+            margin-top: .5rem;
+        }
+
+        .marker:hover,
+        .marker.active:not(:hover) {
+            filter: drop-shadow(0 0 3px #29A2DF);
+            z-index: 3;
+        }
+
+        .dealer-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .dealer-card {
+            width: 100%;
+            background-color: #f8f8f8;
+            color: #111111;
+            text-align: center;
+            padding: 1rem;
+            transition: .2s ease;
+            cursor: context-menu;
+        }
+
+        .dealer-card.active,
+        .dealer-card:hover:not(.active) {
+            box-shadow: 0px 0px 10px 0px #29A2DF;
+            background-color: #29A2DF;
+            color: white;
+        }
+
+        .dealer-no {
+            font-weight: 600;
+        }
+
+        .dealer-bayi span {
+            font-weight: 600;
+        }
+
+        .dealer-name {
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+
+        .dealer-card a {
+            color: #111111;
+            text-decoration: none;
+            transition: .2s ease;
+            font-weight: normal;
+        }
+
+        .dealer-card.active a,
+        .dealer-card:hover:not(.active) a {
+            color: white;
+        }
+
+        .dealer-card.active a:hover,
+        .dealer-card:hover:not(.active) a:hover {
+            color: #111111;
+        }
+
+        @media screen and (max-width:992px) {
+            .dealer-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            .dealer-cards {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container dealer-map-cont">
+        <div class="dealer-map">
+            <div class="marker" style="left: 34.6%; top: 9%;" dealer="berkar">
+                <div class="marker-icon">
+                    <img src="https://static.ticimax.cloud/53123//uploads/images/all/location-mark-1.png" alt="Marker">
+                </div>
+                <div class="marker-content">
+                    <div class="marker-title">
+                        Berkar Ticaret
+                    </div>
+                    <div>
+                        Gölbucağı Mah. Eski Sk. No:50 Merkez/Bartın
+                    </div>
+                    <button class="marker-btn">
+                        Detaya Git
+                    </button>
+                </div>
+            </div>
+            <div class="marker" style="left: 18%; top: 16%;" dealer="lotus">
+                <div class="marker-icon">
+                    <img src="https://static.ticimax.cloud/53123//uploads/images/all/location-mark-1.png" alt="Marker">
+                </div>
+                <div class="marker-content">
+                    <div class="marker-title">
+                        Lotus Oto Bakım Ürünleri
+                    </div>
+                    <div>
+                        Yedpa Tic. Merkez. G Cad. No:154 Ataşehir/İstanbul
+                    </div>
+                    <button class="marker-btn">
+                        Detaya Git
+                    </button>
+                </div>
+            </div>
+            <div class="marker" style="left: 24.3%; top: 35.7%;" dealer="ste">
+                <div class="marker-icon">
+                    <img src="https://static.ticimax.cloud/53123//uploads/images/all/location-mark-1.png" alt="Marker">
+                </div>
+                <div class="marker-content">
+                    <div class="marker-title">
+                        STE Kimya
+                    </div>
+                    <div>
+                        Zafer Mah. Esenyurt Sk. No:32/B Tepebaşı/Eskişehir
+                    </div>
+                    <button class="marker-btn">
+                        Detaya Git
+                    </button>
+                </div>
+            </div>
+            <div class="marker" style="left: 43%; bottom: 36.7%;" dealer="damla">
+                <div class="marker-icon">
+                    <img src="https://static.ticimax.cloud/53123//uploads/images/all/location-mark-1.png" alt="Marker">
+                </div>
+                <div class="marker-content">
+                    <div class="marker-title">
+                        Damla Temizlik
+                    </div>
+                    <div>
+                        Selçuklu Mah. 65/ Paşacık Cad. No:8A Merkez/Aksaray
+                    </div>
+                    <button class="marker-btn">
+                        Detaya Git
+                    </button>
+                </div>
+            </div>
+            <div class="marker" style="left: 19.6%; top: 21.3%;" dealer="cila">
+                <div class="marker-icon">
+                    <img src="https://static.ticimax.cloud/53123//uploads/images/all/location-mark-1.png" alt="Marker">
+                </div>
+                <div class="marker-content">
+                    <div class="marker-title">
+                        Cila Kutusu
+                    </div>
+                    <div>
+                        Park Cad. 4 Temmuz Mah. No:19 D-6 Karamürsel/Kocaeli
+                    </div>
+                    <button class="marker-btn">
+                        Detaya Git
+                    </button>
+                </div>
+            </div>
+            <div class="marker" style="left: 29.6%; top: 12.5%;" dealer="es">
+                <div class="marker-icon">
+                    <img src="https://static.ticimax.cloud/53123//uploads/images/all/location-mark-1.png" alt="Marker">
+                </div>
+                <div class="marker-content">
+                    <div class="marker-title">
+                        ES Ticaret
+                    </div>
+                    <div>
+                        Bağlık Mah. Hacı Ahmet Durak Sk No:22 No:12 Ereğli/Zonguldak
+                    </div>
+                    <button class="marker-btn">
+                        Detaya Git
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="JKatAdi vitrinUrunBaslik categoryTitle">
+        <span class="satir1">
+            <span class="bold">
+                <span class="satir1">Bayiler</span>
+            </span>
+        </span>
+    </div>
+
+    <div class="container py-5">
+        <div class="dealer-cards">
+            <div class="dealer-card" dealer="berkar">
+                <h3>Berkar Ticaret</h3>
+                <div class="dealer-name">
+                    Muharrem Karamazak
+                </div>
+                <div class="dealer-bayi">
+                    <span>Bayi:</span> Bartın/Zongulak/Karabük
+                </div>
+                <div class="dealer-address">Gölbucağı Mah. Eski Sk. No:50 Merkez/Bartın</div>
+                <div>Tel: <a href="tel:05462669274" title="0546 266 92 74">0546 266 92 74</a></div>
+            </div>
+            <div class="dealer-card" dealer="lotus">
+                <h3>Lotus Oto Bakım Ürünleri</h3>
+                <div class="dealer-name">
+                    İsmet Karakoç
+                </div>
+                <div class="dealer-bayi">
+                    <span>Bayi:</span> İstanbul Anadolu Yakası
+                </div>
+                <div class="dealer-address"> Yedpa Tic. Merkez. G Cad. No:154 Ataşehir/İstanbul</div>
+                <div class="dealer-no">Tel: <a href="tel:05412943212" title="0541 294 32 12">0541 294 32 12</a></div>
+            </div>
+            <div class="dealer-card" dealer="ste">
+                <h3>STE Kimya</h3>
+                <div class="dealer-name">
+                    Tülay Yumurtacı
+                </div>
+                <div class="dealer-bayi">
+                    <span>Bayi:</span> Eskişehir/Bilecik/Kütahya/Bursa İnegölü
+                </div>
+                <div class="dealer-address">Zafer Mah. Esenyurt Sk. No:32/B Tepebaşı/Eskişehir</div>
+                <div class="dealer-no">Tel: <a href="tel:05424940222" title="0542 494 02 22">0542 494 02 22</a></div>
+            </div>
+            <div class="dealer-card" dealer="damla">
+                <h3>Damla Temizlik</h3>
+                <div class="dealer-name">
+                    Şerafettin Kara
+                </div>
+                <div class="dealer-bayi">
+                    <span>Bayi:</span> Aksay/Niğde
+                </div>
+                <div class="dealer-address">Selçuklu Mah. 65/ Paşacık Cad. No:8A Merkez/Aksaray</div>
+                <div class="dealer-no">Tel: <a href="tel:05545126868" title="0554 512 68 68">0554 512 68 68</a></div>
+            </div>
+            <div class="dealer-card" dealer="cila">
+                <h3>Cila Kutusu</h3>
+                <div class="dealer-name">
+                    Kaan Köksal
+                </div>
+                <div class="dealer-bayi">
+                    <span>Bayi:</span> Kocaeli/Yalova
+                </div>
+                <div class="dealer-address">Park Cad. 4 Temmuz Mah. No:19 D-6 Karamürsel/Kocaeli</div>
+                <div class="dealer-no">Tel: <a href="tel:05439777379" title="0543 977 73 79">0543 977 73 79</a></div>
+            </div>
+            <div class="dealer-card" dealer="es">
+                <h3>ES Ticaret</h3>
+                <div class="dealer-name">
+                    Sertan Yıldırım
+                </div>
+                <div class="dealer-bayi">
+                    <span>Bayi:</span> Zongulak Karadeniz Ereğli
+                </div>
+                <div class="dealer-address">Bağlık Mah. Hacı Ahmet Durak Sk No:22 No:12 Ereğli/Zonguldak</div>
+                <div class="dealer-no">Tel: <a href="tel:05425448988" title="0542 544 89 88">0542 544 89 88</a></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+
+        $(".marker-icon").click(function () {
+            $(this).parent().toggleClass("active").siblings().removeClass("active");
+            $(this).siblings(".marker-content").slideToggle(200).parent().siblings().children(".marker-content").slideUp(200);
+        })
+
+        $(".marker-btn").click(function () {
+            
+            var item = $(this).parent().parent();
+            var wDealer = $(item).attr("dealer");
+            $(item).removeClass("active");
+            $(item).children(".marker-content").slideUp(200);
+
+            $(".dealer-card[dealer='" + wDealer + "']").addClass("active").siblings().removeClass("active")
+            $(".dealer-card[dealer='" + wDealer + "']")[0].scrollIntoView({
+                behavior: "smooth",
+            });
+
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>
