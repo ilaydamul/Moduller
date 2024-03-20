@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Canvas</title>
+
+	<link rel="stylesheet" href="canvas.css">
+
+</head>
+
+<body>
+	<div id="bg">
+		<canvas id="bgCanvas" width="1669" height="931" style="width: 1669px; height: 931px;"></canvas>
+	</div>
+
+
+	<!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+	<script type="module">
+		var getDevice = (function () {
+			var ua = navigator.userAgent;
+			if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+				return 'sp';
+			} else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+				return 'tab';
+			} else {
+				return 'other';
+			}
+		})();
+
+		/*//////////////////////////
+	  bg
+  //////////////////////////*/
+		var bg = (function () {
+			var eventFlg = false;
+			var scene = new THREE.Scene();
+			var vh = $('#bgCanvas').outerHeight();
+			var h = window.innerHeight;
+			if (vh > h) {
+				h = vh;
+			}
+			//camera
+			var cameraScale = 10;
+			var camera = new THREE.OrthographicCamera(window.innerWidth / -cameraScale, window.innerWidth / cameraScale, h / cameraScale, h / - cameraScale, 0, 100);
+			camera.position.z = 10;
+			if (getDevice == "sp") {
+				camera.zoom = 0.5;
+			}
+			camera.updateProjectionMatrix();
+
+			var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, canvas: document.getElementById("bgCanvas") });
+			renderer.setSize(window.innerWidth, h);
+			if (getDevice == "sp") {
+				renderer.setPixelRatio(window.devicePixelRatio || 1);
+			}
+			document.getElementById("bg").appendChild(renderer.domElement);
+
+			var raycaster = new THREE.Raycaster();
+			var mouse = new THREE.Vector2();
+			var mouseEvent = function (event) {
+				mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+				mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+				eventFlg = true;
+			}
+			if (getDevice != "sp") {
+				window.addEventListener('mousemove', mouseEvent.bind(this), false);
+			}
+			window.addEventListener('blur', function () { eventFlg = true; }, false);
+			var hoverFuntion = function () { };
+			var render = function () {
+				requestAnimationFrame(render.bind(this));
+				if (eventFlg) {
+					raycaster.setFromCamera(mouse, camera);
+					hoverFuntion();
+					renderer.render(scene, camera);
+					eventFlg = false;
+				}
+				mouse.x = -4000;
+				mouse.y = -4000;
+			}
+			//loader
+			var loader = new THREE.TextureLoader();
+			var wp_path = "http://127.0.0.1:5501/";
+			var texture = {
+				home: loader.load(wp_path + 'images/block.png'),
+				release: loader.load(wp_path + 'images/tetrapod.png'),
+				about: loader.load(wp_path + 'images/circle.png'),
+				works: loader.load(wp_path + 'images/triangle.png'),
+				contact: loader.load(wp_path + 'images/arrow.png')
+			}
+			texture.home.minFilter = THREE.LinearFilter;
+			texture.home.magFilter = THREE.LinearFilter;
+			texture.release.minFilter = THREE.LinearFilter;
+			texture.release.magFilter = THREE.LinearFilter;
+			texture.about.minFilter = THREE.LinearFilter;
+			texture.about.magFilter = THREE.LinearFilter;
+			texture.works.minFilter = THREE.LinearFilter;
+			texture.works.magFilter = THREE.LinearFilter;
+			texture.contact.minFilter = THREE.LinearFilter;
+			texture.contact.magFilter = THREE.LinearFilter;
+
+			//list
+			var list = {
+				home: new THREE.Object3D(),
+				release: new THREE.Object3D(),
+				works: new THREE.Object3D(),
+				about: new THREE.Object3D(),
+				contact: new THREE.Object3D()
+			}
+
+			list.home.name = "home";
+			list.release.name = "release";
+			list.works.name = "works";
+			list.about.name = "about";
+			list.contact.name = "contact";
+
+			//Show Animation
+			var inAnimation = function (t) {
+				t.scale.set(0.01, 0.01, 0.01);
+				var tm = new TimelineMax();
+				tm.to(t.scale, 1, { x: 1.0, y: 1.0, z: 1.0, ease: Cubic.easeInOut, delay: 0.5, onUpdate: function () { eventFlg = true; } }, 0);
+			}
+
+			//Leave Animation
+			var leaveScale = 0.05;
+			var leaveAnimation = function (t, name, callback) {
+				var m = t.length;
+				for (var i = 0; i < m; i++) {
+					var tm = new TimelineMax();
+					tm.to(t[i].scale, 1, { x: leaveScale, y: leaveScale, z: leaveScale, ease: Cubic.easeInOut, onUpdate: function () { eventFlg = true; } });
+				}
+				setTimeout(function () {
+					scene.remove(scene.getObjectByName(name));
+					for (var i = 0; i < list[name].children.length; i++) {
+						var v = list[name].children[i].children;
+						for (var m = 0; m < v.length; m++) {
+							scene.remove(v[m].mesh);
+							if (v[m].geometry) {
+								v[m].geometry.dispose();
+							}
+							if (v[m].material) {
+								v[m].material.dispose();
+							}
+							renderer.dispose(v[m].mesh);
+							renderer.dispose(v[m].geometry);
+							renderer.dispose(v[m].material);
+						}
+						v.length = 0;
+					}
+					list[name].children.length = 0;
+					if (callback) {
+						callback();
+					}
+				}, 1000);
+			}
+
+			var resizeTimer;
+			var resizeFunc = function () {
+				//console.log("resize");
+			};
+
+			return {
+				init: function () {
+					render();
+				},
+				resize: function () {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(function () {
+						resizeFunc();
+						camera.left = window.innerWidth / -cameraScale;
+						camera.right = window.innerWidth / cameraScale;
+						camera.top = window.innerHeight / cameraScale;
+						camera.bottom = window.innerHeight / - cameraScale;
+						camera.updateProjectionMatrix();
+						renderer.setSize(window.innerWidth, window.innerHeight);
+					}, 50);
+				},
+				/*//////////////////
+					HOME
+				//////////////////*/
+				home: {
+					init: function () {
+						this.create();
+						hoverFuntion = this.hover.bind(this);
+						resizeFunc = this.resize.bind(this);
+					},
+					resize: function () {
+						leaveAnimation(list.home.children, 'home', this.create);
+					},
+					create: function () {
+						var columnMax = Math.ceil(window.innerWidth / 110) + 1;
+						var rowMax = Math.ceil(window.innerHeight / 63);
+						if (getDevice == "sp") {
+							columnMax = columnMax * 2;
+							rowMax = rowMax * 2;
+						}
+						var n = Math.floor(columnMax * rowMax);
+
+						var scale = 1;
+						var base = {
+							w: 24.4 / scale,
+							h: 28.4 / scale
+						}
+						for (var i = 0, row = 0, column = 0; i < n; i++, column++) {
+							var geometry = new THREE.PlaneBufferGeometry(base.w, base.h, 2);
+							var material = new THREE.MeshBasicMaterial({ map: texture.home, transparent: true });
+							var plane = new THREE.Mesh(geometry, material);
+							var diff = 0;
+							if (row % 2 == 0) {
+								diff = -base.w / 2;
+							}
+							plane.position.x = column * (base.w) + diff;
+							plane.position.y = row * (base.h * 0.74);
+							if (column >= columnMax) {
+								column = 0;
+								row++;
+							}
+							inAnimation(plane);
+							list.home.add(plane);
+						}
+						scene.add(list.home);
+						list.home.name = 'home';
+						list.home.position.x = -1 * (base.w * columnMax / 2);
+						list.home.position.y = -1 * (base.h * 0.7 * rowMax / 2);
+					},
+					hover: function () {
+						var intersects = raycaster.intersectObjects(list.home.children, true);
+						if (intersects.length < 10) {
+							for (var i = 0; i < intersects.length; i++) {
+								this.action(intersects[i].object);
+							}
+						}
+					},
+					action: function (t) {
+						if (!t.isAnimation) {
+							t.isAnimation = true;
+							t.position.z = 0.1;
+							var l = t.position.y + 10;
+							var tm = new TimelineMax({
+								yoyo: true,
+								repeat: 1,
+								repeatDelay: 0
+							});
+							var speed = 0.2;
+							tm.to(t.position, speed, {
+								y: l, ease: Cubic.easeInOut, onUpdate: function () {
+									eventFlg = true;
+								}, onComplete: function () {
+									setTimeout(function () {
+										t.isAnimation = false;
+										t.position.z = 0;
+									}, 500)
+								}
+							}, 0);
+						} else {
+							return;
+						}
+					},
+					leave: function () {
+						leaveAnimation(list.home.children, 'home');
+					}
+				},
+				/*//////////////////
+					release
+				//////////////////*/
+				release: {
+					init: function () {
+						this.create();
+						resizeFunc = this.resize.bind(this);
+						hoverFuntion = this.hover.bind(this);
+					},
+					resize: function () {
+						leaveAnimation(list.release.children, 'release', this.create);
+					},
+					create: function () {
+						var columnMax = Math.floor(window.innerWidth / 90) + 3;
+						var rowMax = Math.floor(window.innerHeight / 70) + 3;
+						if (getDevice == "sp") {
+							columnMax = columnMax * 2;
+							rowMax = rowMax * 2;
+						}
+						var n = Math.floor(columnMax * rowMax);
+						var scale = 1;
+						var base = {
+							w: 33.0 / scale,
+							h: 28.5 / scale
+						}
+						for (var i = 0, row = 0, column = 0; i < n; i++, column++) {
+							var geometry = new THREE.PlaneBufferGeometry(base.w, base.h, 2);
+							var material = new THREE.MeshBasicMaterial({ map: texture.release, transparent: true });
+							var plane = new THREE.Mesh(geometry, material);
+							var diff = 0;
+							if (row % 2 == 0) {
+								diff = base.w * 0.74 / 2;
+							}
+							plane.position.x = column * (base.w * 0.74) + diff;
+							plane.position.y = row * (base.h * 0.74);
+							if (column > columnMax) {
+								column = 0;
+								row++;
+							}
+							inAnimation(plane);
+							list.release.add(plane);
+						}
+						scene.add(list.release);
+						list.release.name = 'releaseBlock';
+						list.release.position.x = -1 * base.w * columnMax / 2;
+						list.release.position.y = -1 * base.h * 0.73 * rowMax / 2;
+					},
+					vertices: [],
+					hover: function () {
+						var intersects = raycaster.intersectObjects(list.release.children, true);
+						if (intersects.length < 10) {
+							for (var i = 0; i < intersects.length; i++) {
+								this.action(intersects[i].object);
+							}
+						}
+					},
+					action: function (t) {
+						if (!t.isAnimation) {
+							t.isAnimation = true;
+							var tm = new TimelineMax();
+							t.rotation.z = 0;
+							tm.to(t.rotation, 0.5, {
+								z: 120 * (Math.PI / 180), ease: Cubic.easeInOut, onUpdate: function () {
+									eventFlg = true;
+								}, onComplete: function () {
+									setTimeout(function () {
+										t.isAnimation = false;
+									}, 50)
+								}
+							});
+						} else {
+							return;
+						}
+					},
+					leave: function () {
+						leaveAnimation(list.release.children, 'release');
+					}
+				},
+				about: {
+					init: function () {
+						this.create();
+						//aboutBaku.init();
+						hoverFuntion = this.hover.bind(this);
+						resizeFunc = this.resize.bind(this);
+						this.bakuClickSetting();
+						if (!this.bakuImageLoading) {
+							this.bakuImageLoad();
+							this.bakuImageLoading = true;
+						}
+						app = {
+							text: "縺薙ｌ縺ｾ縺ｧ縺ｫ縺ｪ縺�い繧､繝�い縺ｧ縲√％繧後∪縺ｧ縺ｫ縺ｪ縺�万縺ｳ繧�",
+							index: 0,
+							chars: 0,
+							speed: 100,
+							container: ".text .content",
+							init: function () {
+								this.chars = this.text.length;
+								setTimeout(function () {
+									$(".text").addClass("aniEnd");
+								}, this.speed * this.text.length)
+								return this.write();
+							},
+							write: function () {
+								$(this.container).append(this.text[this.index]);
+								if (this.index < this.chars) {
+									this.index++;
+									return window.setTimeout(function () {
+										return app.write();
+									}, this.speed);
+								}
+							}
+						};
+						var waitTime = 500;
+						if (isLoading) {
+							waitTime = 3500;
+						}
+						setTimeout(function () {
+							app.init();
+						}, waitTime);
+					},
+					bakuImageLoading: false,
+					resize: function () {
+						leaveAnimation(list.about.children, 'about', this.create);
+					},
+					bakuImageLoad: function () {
+						for (var i = 0; i < 6; i++) {
+							var img = new Image();
+							img.onload = function () { }
+							img.src = wp_path + "images/" + "anime_0" + (i + 1) + "-min.png";
+						}
+					},
+					bakuClickCount: 0,
+					bakuClickSetting: function () {
+						var t = $(".baku");
+						this.bakuClickCount = 0;
+						t.off('click', this.bakuClick.bind(this));
+						t.on('click', this.bakuClick.bind(this));
+					},
+					bakuAnimationFlg: false,
+					bakuClick: function () {
+						if (this.bakuAnimationFlg) {
+							return;
+						}
+						this.bakuClickCount++;
+						if (this.bakuClickCount == 1 || this.bakuClickCount == 3 || this.bakuClickCount == 5) {
+							this.bakuAnimationFlg = true;
+							var that = this;
+							$(".baku").attr("class", "baku step" + this.bakuClickCount).on({
+								'webkitAnimationEnd': function () {
+									that.bakuAnimationFlg = false;
+									if (that.bakuClickCount == 1 || that.bakuClickCount == 3 || that.bakuClickCount == 5) {
+										that.bakuClickCount++;
+										if (that.bakuClickCount >= 6) {
+											that.bakuClickCount = 0;
+										}
+										$(".baku").attr("class", "baku step" + that.bakuClickCount);
+									}
+								},
+								'animationend': function () {
+									that.bakuAnimationFlg = false;
+									if (that.bakuClickCount == 1 || that.bakuClickCount == 3 || that.bakuClickCount == 5) {
+										that.bakuClickCount++;
+										if (that.bakuClickCount >= 6) {
+											that.bakuClickCount = 0;
+										}
+										$(".baku").attr("class", "baku step" + that.bakuClickCount);
+									}
+								}
+							});
+						}
+					},
+					create: function () {
+						var columnMax = Math.ceil(window.innerWidth / 100) + 1;
+						var rowMax = Math.ceil(window.innerHeight / 70) + 2;
+						if (getDevice == "sp") {
+							columnMax = columnMax * 2;
+							rowMax = rowMax * 2;
+						}
+						var n = Math.floor(columnMax * rowMax);
+						var base = {
+							w: 36.2,
+							h: 42.3
+						}
+						var scaleW = 0.6755;
+						var scaleH = 0.4999999;
+						for (var i = 0, row = 0, column = 0; i < n; i++, column++) {
+							var obj = new THREE.Object3D();
+							var geometry = new THREE.CircleBufferGeometry(12.25, 30);
+							geometry.center();
+							var material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true });
+							var circle = new THREE.Mesh(geometry, material);
+							circle.position.x -= 0.3;
+							circle.name = "aboutObject";
+							obj.add(circle);
+
+							var geometry = new THREE.PlaneBufferGeometry(base.w, base.h, 2);
+							var material = new THREE.MeshBasicMaterial({ map: texture.about, transparent: true });
+							var plane = new THREE.Mesh(geometry, material);
+							var diff = 0;
+							if (row % 2 == 0) {
+								diff = base.w * scaleW / 2;
+							}
+							obj.add(plane);
+							obj.position.x = column * (base.w * scaleW) + diff;
+							obj.position.y = row * (base.h * scaleH);
+							if (column > columnMax) {
+								column = 0;
+								row++;
+							}
+							inAnimation(obj);
+							list.about.add(obj);
+						}
+						scene.add(list.about);
+						list.about.name = 'about';
+						list.about.position.x = -1 * base.w * scaleW * columnMax / 2;
+						list.about.position.y = -1 * base.h * scaleH * rowMax / 2;
+					},
+					hover: function () {
+						var intersects = raycaster.intersectObjects(list.about.children, true);
+						if (intersects.length < 10) {
+							for (var i = 0; i < intersects.length; i++) {
+								if (intersects[i].object.name == "aboutObject") {
+									this.action(intersects[i].object);
+								}
+							}
+						}
+					},
+					action: function (t) {
+						if (!t.isAnimation) {
+							t.isAnimation = true;
+							var speed = 0.4;
+							var sc = new TimelineMax({
+								yoyo: true,
+								repeat: 1,
+								repeatDelay: 0
+							});
+							sc.to(t.scale, speed, {
+								x: 0, y: 0, z: 0, ease: Power1.easeIn, onUpdate: function () { eventFlg = true; }, onComplete: function () {
+									setTimeout(function () {
+										t.isAnimation = false;
+									}, 500);
+								}
+							}, 0);
+						} else {
+							return;
+						}
+					},
+					leave: function () {
+						$(".concept").empty();
+						$(".text").removeClass("aniEnd");
+						leaveAnimation(list.about.children, 'about');
+					}
+				},
+				works: {
+					init: function () {
+						this.create();
+						hoverFuntion = this.hover.bind(this);
+						resizeFunc = this.resize.bind(this);
+					},
+					resize: function () {
+						leaveAnimation(list.works.children, 'works', this.create);
+					},
+					create: function () {
+						var columnMax = Math.ceil(window.innerWidth / 55) + 2;
+						var rowMax = Math.ceil(window.innerHeight / 100) + 3;
+						if (getDevice == "sp") {
+							columnMax = columnMax * 2;
+							rowMax = rowMax * 2;
+						}
+						var n = Math.floor(columnMax * rowMax);
+
+						var scale = 1;
+						var base = {
+							w: 24.6 / scale,
+							h: 21.3 / scale
+						}
+						for (var i = 0, row = 0, column = 0; i < n; i++, column++) {
+							var obj = new THREE.Object3D();
+
+							var geometry = new THREE.Geometry();
+							geometry.vertices[0] = new THREE.Vector3(base.w / 2, base.h / 2, 0);
+							geometry.vertices[1] = new THREE.Vector3(-base.w / 2, base.h / 2, 0);
+							geometry.vertices[2] = new THREE.Vector3(0, -base.h / 2, 0);
+							geometry.faces[0] = new THREE.Face3(0, 1, 2);
+							var material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true });
+							var Triangle = new THREE.Mesh(geometry, material);
+							Triangle.position.set(0, 0, 0);
+							Triangle.name = "death";
+							obj.add(Triangle);
+
+							var geometry = new THREE.PlaneGeometry(base.w, base.h, 1);
+							var material = new THREE.MeshBasicMaterial({ map: texture.works, transparent: true });
+							var plane = new THREE.Mesh(geometry, material);
+							var diff = 0;
+							if (row % 2 == 0) {
+								diff = base.w * 0.5;
+							}
+							obj.position.x = column * (base.w * 0.5) + diff;
+							obj.position.y = row * (base.h);
+							if (column > columnMax) {
+								column = 0;
+								row++;
+							}
+							obj.add(plane);
+
+							if (column % 2 == 0) {
+								obj.rotation.z = 180 * (Math.PI / 180);
+							}
+
+							inAnimation(obj);
+							list.works.add(obj);
+						}
+						scene.add(list.works);
+						list.works.name = 'works';
+						list.works.position.x = -1 * base.w * 0.5 * columnMax / 2;
+						list.works.position.y = -1 * base.h * rowMax / 2;
+					},
+					hover: function () {
+						var intersects = raycaster.intersectObjects(list.works.children, true);
+						if (intersects.length < 10) {
+							for (var i = 0; i < intersects.length; i++) {
+								if (intersects[i].object.name == "death") {
+									this.action(intersects[i].object);
+								}
+							}
+						}
+					},
+					action: function (t) {
+						if (!t.isAnimation) {
+							t.isAnimation = true;
+							var tm = new TimelineMax({
+								yoyo: true,
+								repeat: 1,
+								repeatDelay: 0
+							});
+							var speed = 0.4;
+							tm.to(t.material, speed, {
+								opacity: 0, ease: Power1.easeOut, onUpdate: function () {
+									eventFlg = true;
+								}, onComplete: function () {
+									setTimeout(function () {
+										t.isAnimation = false;
+									}, 500);
+								}
+							}, 0);
+						} else {
+							return;
+						}
+					},
+					leave: function () {
+						leaveAnimation(list.works.children, 'works');
+					}
+				},
+				contact: {
+					init: function () {
+						this.create();
+						hoverFuntion = this.hover.bind(this);
+						resizeFunc = this.resize.bind(this);
+					},
+					resize: function () {
+						leaveAnimation(list.contact.children, 'contact', this.create);
+					},
+					create: function () {
+						var columnMax = Math.ceil(window.innerWidth / 128) + 2;
+						var rowMax = Math.ceil(window.innerHeight / 55) + 3;
+						if (getDevice == "sp") {
+							columnMax = columnMax * 2;
+							rowMax = rowMax * 2;
+						}
+						var n = Math.floor(columnMax * rowMax);
+						var scale = 1;
+						var base = {
+							w: 24.5 / scale,
+							h: 21.0 / scale
+						}
+						for (var i = 0, row = 0, column = 0; i < n; i++, column++) {
+							var ob = new THREE.Object3D();
+							var geometry_ = new THREE.PlaneGeometry(base.w, base.h, 2, 1);
+							var material_ = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
+							var plane_ = new THREE.Mesh(geometry_, material_);
+							var scale = 3.4 * 2;
+							//var scale = 0*2;
+							plane_.geometry.vertices[0].y -= scale + 0.1;
+							plane_.geometry.vertices[2].y -= scale;
+							plane_.geometry.vertices[4].y += scale + 0.1;
+							plane_.geometry.dymanic = true;
+							plane_.geometry.verticesNeedUpdate = true;
+							//plane_.position.z = -0.01;
+							plane_.name = "contact";
+							ob.add(plane_);
+
+							var geometry = new THREE.PlaneBufferGeometry(base.w, base.h, 1);
+							var material = new THREE.MeshBasicMaterial({ map: texture.contact, transparent: true });
+							var plane = new THREE.Mesh(geometry, material);
+							var diff = 0;
+							if (row % 2 == 0) {
+								diff = base.w / 2;
+								ob.rotation.z = 1 * Math.PI;
+							}
+							ob.add(plane);
+							ob.position.x = column * (base.w) + diff;
+							ob.position.y = row * (base.h * 0.66);
+							inAnimation(ob);
+							if (column > columnMax) {
+								column = 0;
+								row++;
+							}
+							list.contact.add(ob);
+						}
+						scene.add(list.contact);
+						list.contact.position.x = -1 * base.w * columnMax / 2 - base.w;
+						list.contact.position.y = -1 * base.h * 0.64 * row / 2;
+						this.vertices = list.contact.children[0].children[0].geometry.vertices;
+
+					},
+					hover: function () {
+						var intersects = raycaster.intersectObjects(list.contact.children, true);
+						if (intersects.length < 10) {
+							for (var i = 0; i < intersects.length; i++) {
+								if (intersects[i].object.name == "contact") {
+									this.action(intersects[i].object);
+								}
+							}
+						}
+					},
+					action: function (obj) {
+						if (obj.geometry.isAnimation) {
+							return;
+						}
+						obj.geometry.isAnimation = true;
+						obj.geometry.dymanic = true;
+						obj.geometry.verticesNeedUpdate = true;
+						var v = [this.vertices[0].y, this.vertices[1].y, this.vertices[2].y, this.vertices[3].y, this.vertices[4].y, this.vertices[5].y];
+						var tm = [
+							new TimelineMax(),
+							new TimelineMax(),
+							new TimelineMax(),
+							new TimelineMax(),
+							new TimelineMax(),
+							new TimelineMax()
+						];
+						var speed = 0.25;
+						tm[0].to(obj.geometry.vertices[0], 0, { y: v[3], delay: speed, onUpdate: update }).to(obj.geometry.vertices[0], speed, { y: v[0], ease: Cubic.easeInOut, onUpdate: update });
+						tm[1].to(obj.geometry.vertices[1], 0, { y: v[4], delay: speed, onUpdate: update }).to(obj.geometry.vertices[1], speed, { y: v[1], ease: Cubic.easeInOut, onUpdate: update });
+						tm[2].to(obj.geometry.vertices[2], 0, { y: v[5], delay: speed, onUpdate: update }).to(obj.geometry.vertices[2], speed, { y: v[2], ease: Cubic.easeInOut, onUpdate: update });
+						tm[3].to(obj.geometry.vertices[3], speed, { y: v[0], ease: Cubic.easeInOut, onUpdate: update }).to(obj.geometry.vertices[3], 0, { y: v[3], onUpdate: update });
+						tm[4].to(obj.geometry.vertices[4], speed, { y: v[1], ease: Cubic.easeInOut, onUpdate: update }).to(obj.geometry.vertices[4], 0, { y: v[4], onUpdate: update })
+						tm[5].to(obj.geometry.vertices[5], speed, { y: v[2], ease: Cubic.easeInOut, onUpdate: update }).to(obj.geometry.vertices[5], 0, { y: v[5], onUpdate: update })
+						function update() {
+							obj.geometry.verticesNeedUpdate = true;
+							eventFlg = true;
+						}
+						setTimeout(function () {
+							obj.geometry.isAnimation = false;
+						}, 1000);
+					},
+					leave: function () {
+						leaveAnimation(list.contact.children, 'contact');
+					}
+				}
+			}
+		}());
+	</script>
+</body>
+
+</html>
