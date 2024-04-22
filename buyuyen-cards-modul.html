@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Slick Slide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+        integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+        integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Css -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Başlık</title>
+
+    <style>
+        .campaigns {
+            display: flex;
+        }
+
+        .campaign {
+            flex: 1;
+            transition: .3s ease;
+            position: relative;
+            text-decoration: none !important;
+        }
+
+        .campaign img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .campaign:hover {
+            flex: 3;
+        }
+
+        .campaign-info {
+            background-color: red;
+            color: white;
+            padding: 1rem;
+            height: 90px;
+            display: flex;
+            align-items: center;
+        }
+
+        .campaign-info h3 {
+            font-size: 1.5rem;
+            margin: 0;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+        }
+
+        .campaign:nth-child(odd) .campaign-info {
+            background-color: rgb(0, 0, 0);
+            color: #fc0;
+        }
+
+        .campaign:nth-child(even) .campaign-info {
+            color: rgb(0, 0, 0);
+            background-color: #fc0;
+        }
+
+
+
+        .foods {
+            display: flex;
+            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .food-card {
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            cursor: pointer;
+            transition: .3s ease;
+
+        }
+
+        .food-card .food-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .3s ease;
+        }
+
+        .food-infos {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            background: linear-gradient(0deg, #000, transparent);
+            color: white;
+        }
+
+        .food-infos h3 {
+            font-size: 1.5rem;
+        }
+
+        .food-infos p {
+            margin: 0;
+        }
+
+        .food-card:hover .food-image {
+            transform: scale(1.2);
+        }
+
+        .food-detail {
+            display: none;
+        }
+
+        .fModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.308);
+            z-index: 99;
+            padding: 1rem;
+        }
+
+        .fModal-container {
+            background-color: white;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            padding: 2rem;
+            position: relative;
+            background: #111;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            font-size: 1.5rem;
+            position: absolute;
+            right: 1rem;
+            top: .5rem;
+            color: #fc0;
+        }
+
+        .fModal-detail-container {
+            height: 100%;
+            position: relative;
+        }
+
+        .fModal-images {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .fModal-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+        }
+
+        .fModal-image {
+            height: 100%;
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .fModal-images img {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .fModal-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: end;
+            justify-content: start;
+            padding: 3rem;
+            text-align: start;
+            background: linear-gradient(0deg, #111, transparent);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .fModal-content p {
+            margin: 0;
+        }
+
+        .fModal-title {
+            font-size: 1.8rem;
+            color: #fc0;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+            top: 2rem;
+            background: #111;
+            padding: 0.2rem 1rem;
+        }
+
+        .fModal-images .slick-arrow {
+            position: absolute;
+            top: 50%;
+            color: rgb(0, 0, 0);
+            z-index: 1;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .fModal-images .icon-right-big {
+            right: -1rem;
+        }
+
+        .fModal-images .icon-left-big {
+            left: -1rem;
+        }
+
+        .fModal-images .slick-arrow:not(.slick-disabled) {
+            color: #fc0;
+        }
+
+        @media screen and (max-width:992px) {
+            .fModal-images {
+                height: 100%;
+            }
+
+            .fModal-images .icon-right-big {
+                right: -1.4rem;
+            }
+
+            .fModal-images .icon-left-big {
+                left: -1.4rem;
+            }
+
+            .fModal-content {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            .campaigns {
+                flex-wrap: wrap;
+            }
+
+            .campaign {
+                width: 100%;
+                flex: auto;
+            }
+
+            .campaign img {
+                height: 300px;
+            }
+
+
+        }
+
+        @media screen and (max-width:576px) {
+            .fModal-title {
+                font-size: 1.4rem;
+                top: 1.5rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+
+        @media screen and (max-width:480px) {
+            .campaign img {
+                height: 250px;
+            }
+
+            .fModal-title {
+                font-size: 1.1rem;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .fModal-content {
+                padding: .5rem;
+                font-size: 1rem;
+                line-height: 1.1;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <section class="fModal d-none">
+        <div class="fModal-container">
+            <div class="fModal-close">
+                <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
+            </div>
+            <div class="fModal-detail-container">
+
+                <div class="fModal-images">
+                    <div>
+                        <div class="fModal-image">
+                            <div class="fModal-title">
+                                ROTANTE BLUE BERRY BURGER
+                            </div>
+                            <img src="https://storage.acerapps.io/app-1320/tavukTabaklari(2).webp" class="food-image"
+                                alt="">
+                            <div class="fModal-content">
+                                <p>Tabak İçindekiler: Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Consectetur
+                                    fuga
+                                    natus nihil laudantium? Explicabo quia libero cupiditate ab. Earum, a.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="fModal-image">
+                            <div class="fModal-title">
+                                ROTANTE BLUE BERRY BURGER
+                            </div>
+                            <img src="https://storage.acerapps.io/app-1320/tavukTabaklari(2).webp" class="food-image"
+                                alt="">
+                            <div class="fModal-content">
+                                <p>Tabak İçindekiler: Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Consectetur
+                                    fuga
+                                    natus nihil laudantium? Explicabo quia libero cupiditate ab. Earum, a.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="fModal-image">
+                            <div class="fModal-title">
+                                ROTANTE BLUE BERRY BURGER
+                            </div>
+                            <img src="https://storage.acerapps.io/app-1320/tavukTabaklari(2).webp" class="food-image"
+                                alt="">
+                            <div class="fModal-content">
+                                <p>Tabak İçindekiler: Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Consectetur
+                                    fuga
+                                    natus nihil laudantium? Explicabo quia libero cupiditate ab. Earum, a.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <section class="">
+        <div class="campaigns">
+            <a href="#" class="campaign" title="Kampanya 1">
+                <img src="tavukTabaklari.webp" alt="Kampanya 1">
+                <div class="campaign-info">
+                    <h3>Kampanya 1</h3>
+                </div>
+            </a>
+            <a href="#" class="campaign" title="Kampanya 1">
+                <img src="tavukTabaklari.webp" alt="Kampanya 1">
+                <div class="campaign-info">
+                    <h3>Kampanya 2</h3>
+                </div>
+            </a>
+            <a href="#" class="campaign" title="Kampanya 1">
+                <img src="tavukTabaklari.webp" alt="Kampanya 1">
+                <div class="campaign-info">
+                    <h3>Kampanya 3 Kampanya 3 Kampanya 3</h3>
+                </div>
+            </a>
+            <a href="#" class="campaign" title="Kampanya 1">
+                <img src="tavukTabaklari.webp" alt="Kampanya 1">
+                <div class="campaign-info">
+                    <h3>Kampanya 4</h3>
+                </div>
+            </a>
+            <a href="#" class="campaign" title="Kampanya 1">
+                <img src="tavukTabaklari.webp" alt="Kampanya 1">
+                <div class="campaign-info">
+                    <h3>Kampanya 5</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+
+    <section class="my-5">
+        <div class="container">
+            <div class="foods">
+                <div class="food-card">
+                    <img src="https://storage.acerapps.io/app-1320/tavukTabaklari(2).webp" class="food-image" alt="">
+                    <div class="food-infos">
+                        <h3>Yemek Başlığı</h3>
+                        <p>Göy giləmeyvə sousu, jolepen, çedar, xırçıldayan toyuq</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <img src="https://storage.acerapps.io/app-1320/tavukTabaklari(2).webp" class="food-image" alt="">
+                    <div class="food-infos">
+                        <h3>Yemek Başlığı</h3>
+                        <p>Göy giləmeyvə sousu, jolepen, çedar, xırçıldayan toyuq</p>
+                    </div>
+                </div>
+                <div class="food-card">
+                    <img src="https://storage.acerapps.io/app-1320/tavukTabaklari(2).webp" class="food-image" alt="">
+                    <div class="food-infos">
+                        <h3>Yemek Başlığı</h3>
+                        <p>Göy giləmeyvə sousu, jolepen, çedar, xırçıldayan toyuq</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Slick Slide -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- ? -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+    <script>
+        $('.fModal-images').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            prevArrow: '<i class="fa fa-chevron-left icon-left-big"></i>',
+            nextArrow: '<i class="fa fa-chevron-right icon-right-big"></i>',
+        });
+
+    </script>
+</body>
+
+</html>

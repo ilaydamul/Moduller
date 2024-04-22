@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Slick Slide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+        integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+        integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+    <title>Başlık</title>
+    <style>
+        .ai-slider {
+            padding: 3rem 0;
+        }
+
+        .ai-card {
+            margin: 1rem;
+            color: white;
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: .3s ease;
+
+        }
+
+        .ai-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: .3s ease;
+        }
+
+        .ai-info {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            padding:  .75rem ;
+            background: linear-gradient(0deg, black, transparent);
+        }
+
+        .ai-card h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .ai-card:hover img{
+            transform: scale(1.1);
+        }
+        .ai-card:hover{
+            color: #fc0;
+        }
+
+        .video-container{
+            width: 100%;
+            height: 400px;
+            position: relative;
+        } 
+
+        .video-container video{
+            object-fit: cover;
+        }
+
+        .shadow{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: #00000052;
+            background: linear-gradient(0deg, #000000a1, transparent);
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <section>
+            <div class="video-container">
+                <div class="shadow"></div>
+                <video src="rotant.mp4" width="100%" height="100%" playsinline autoplay muted loop></video>
+            </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="ai-slider">
+                <a href="https://storage.acerapps.io/app-1320/blog-1.webp" title="Caption" data-fancybox="gallery"
+                    data-caption="Caption" class="ai-card">
+                    <img src="https://storage.acerapps.io/app-1320/blog-1.webp" alt="Caption">
+
+                    <div class="ai-info">
+                        <h3>Caption</h3>
+                    </div>
+                </a>
+                <a href="https://storage.acerapps.io/app-1320/blog-1.webp" title="Caption" data-fancybox="gallery"
+                    data-caption="Caption" class="ai-card">
+                    <img src="https://storage.acerapps.io/app-1320/blog-1.webp" alt="Caption">
+                    <div class="ai-info">
+                        <h3>Caption</h3>
+                    </div>
+                </a>
+                <a href="https://storage.acerapps.io/app-1320/blog-1.webp" title="Caption" data-fancybox="gallery"
+                    data-caption="Caption" class="ai-card">
+                    <img src="https://storage.acerapps.io/app-1320/blog-1.webp" alt="Caption">
+                    <div class="ai-info">
+                        <h3>Caption</h3>
+                    </div>
+                </a>
+                <a href="https://storage.acerapps.io/app-1320/blog-1.webp" title="Caption" data-fancybox="gallery"
+                    data-caption="Caption" class="ai-card">
+                    <img src="https://storage.acerapps.io/app-1320/blog-1.webp" alt="Caption">
+                    <div class="ai-info">
+                        <h3>Caption</h3>
+                    </div>
+                </a>
+                <a href="https://storage.acerapps.io/app-1320/blog-1.webp" title="Caption" data-fancybox="gallery"
+                    data-caption="Caption" class="ai-card">
+                    <img src="https://storage.acerapps.io/app-1320/blog-1.webp" alt="Caption">
+                    <div class="ai-info">
+                        <h3>Caption</h3>
+                    </div>
+                </a>
+                <a href="https://storage.acerapps.io/app-1320/blog-1.webp" title="Caption" data-fancybox="gallery"
+                    data-caption="Caption" class="ai-card">
+                    <img src="https://storage.acerapps.io/app-1320/blog-1.webp" alt="Caption">
+                    <div class="ai-info">
+                        <h3>Caption</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Slick Slide -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- ? -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script>
+        $('.ai-slider').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+    </script>
+</body>
+
+</html>

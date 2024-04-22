@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Slick Slide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+
+    <!-- Animate Min Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Animate Compat Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.compat.min.css">
+
+    <title>Title</title>
+
+    <style>
+        header {
+            background-color: #272727;
+            padding: 1rem 0;
+            color: white;
+            position: sticky;
+            top: 0;
+            transition: all .2s ease;
+            z-index: 3;
+        }
+
+        .logo img {
+            width: 200px;
+            object-fit: scale-down;
+            filter: brightness(0%) saturate(100%) invert(100%) sepia(0%) hue-rotate(0deg);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-item a {
+            color: white;
+            transition: .2s ease;
+            text-decoration: none;
+        }
+
+
+
+
+        .header-item .header-line {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            left: -100%;
+            transition: .3s ease;
+        }
+
+
+
+        .header-item:hover .header-line {
+            left: 0%;
+        }
+
+        .header-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .socials {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            top: 24px;
+        }
+
+        .header-burger {
+            display: none;
+        }
+
+        .mobile-socials {
+            display: none;
+        }
+
+        .open-socials {
+            cursor: pointer;
+        }
+
+        .open-socials i {
+            font-size: 1.2rem;
+        }
+
+        header.sticky {
+            background-color: white;
+        }
+
+        header.sticky {
+            color: #1e01d9;
+            box-shadow: 0px 3px 3px 0px #02020226;
+        }
+
+        header.sticky .logo img {
+            filter: none;
+        }
+
+        header.sticky .header-burger .burger-icon {
+            background-color: #1E01D9;
+        }
+
+        header.sticky .burger-icon::before,
+        header.sticky .burger-icon::after {
+            background-color: #1E01D9;
+        }
+
+        .header-socials {
+            position: relative;
+        }
+
+        .socials a {
+            background: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 4px 0px #0000004f;
+            text-decoration: none;
+            color: black;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: .2s ease;
+        }
+
+        .socials a:hover {
+            color: #1E01D9;
+        }
+
+        .header-socials:hover .socials a {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media screen and (min-width:992px) {
+            .header-links {
+                display: flex !important;
+            }
+
+            header.sticky .header-item a {
+                color: #1E01D9;
+            }
+
+            header.sticky .header-item .header-line {
+                background-color: #1E01D9;
+            }
+
+            .page-banner h1 {
+                max-width: 50%;
+            }
+
+            .page-breadcrumb {
+                max-width: 40%;
+            }
+
+        }
+
+        @media screen and (max-width:992px) {
+            .header-burger {
+                color: white;
+                border-color: transparent;
+                outline: none !important;
+                position: relative;
+                width: 35px;
+                height: 45px;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .burger-icon {
+                display: block;
+                width: 2rem;
+                height: 3px;
+                border-radius: 1rem;
+                background: white;
+                transition: 0.3s ease;
+            }
+
+            .burger-icon::before,
+            .burger-icon::after {
+                content: "";
+                width: 2rem;
+                height: 3px;
+                border-radius: 1rem;
+                background: white;
+                position: absolute;
+                transition: 0.3s ease;
+                left: 2px;
+            }
+
+            .burger-icon::before {
+                top: 1.8rem;
+            }
+
+            .burger-icon::after {
+                bottom: 1.8rem;
+            }
+
+
+            .header-burger.active .burger-icon {
+                background-color: transparent !important;
+            }
+
+            .header-burger.active .burger-icon::before {
+                transform: rotateZ(-45deg) scaleX(1.25) translate(2.5px, -3.5px);
+            }
+
+            .header-burger.active .burger-icon::after {
+                transform: rotateZ(45deg) scaleX(1.25) translate(6.5px, 7.5px);
+            }
+
+            .mobile-socials {
+                display: flex;
+                justify-content: center;
+
+            }
+
+            .mobile-socials a {
+                font-size: 1.2rem;
+            }
+
+            .header-links {
+                display: none;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 66px;
+                background: #272727;
+                flex-direction: column;
+                text-align: center;
+                gap: 0;
+            }
+
+
+            .header-item a {
+                display: block;
+                padding: 0.75rem;
+            }
+
+            .header-socials {
+                display: none;
+            }
+
+        }
+
+        @media screen and (max-width:480px) {
+            .logo img {
+                width: 140px;
+            }
+
+            .header-links {
+                top: 61px;
+            }
+
+            .about_we_text_slider .slick-dots {
+                bottom: -20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <header id="header">
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <a href="/" title="Viva Teknoloji"><img
+                            src="https://storage.acerapps.io/app-1392/image/Logo/Viva%20Y%C3%BCksek-Renkli.png"
+                            alt="Viva Teknoloji"></a>
+                </div>
+                <div class="header-group">
+                    <div class="header-links">
+                        <div class="header-item">
+                            <a href="/" title="Anasayfa">Anasayfa</a>
+                            <div class="header-line"></div>
+                        </div>
+                        <div class="header-item">
+                            <a href="/hakkimizda" title="Hakkımızda">Hakkımızda</a>
+                            <div class="header-line"></div>
+                        </div>
+                        <div class="header-item">
+                            <a href="/urunlerimiz" title="Ürünlerimiz">Ürünlerimiz</a>
+                            <div class="header-line"></div>
+                        </div>
+                        <div class="header-item">
+                            <a href="/iletisim" title="İletişim">İletişim</a>
+                            <div class="header-line"></div>
+                        </div>
+                        <div class="header-item mobile-socials">
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="header-socials">
+                        <div class="open-socials">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </div>
+                        <div class="socials">
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-burger">
+                    <span class="burger-icon"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div style="height: 100rem;">
+
+    </div>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!-- Jquery UI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- Wow -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+    <!-- Slick Slide -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Imask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.0.7/imask.min.js"></script>
+
+    <script>
+
+        window.addEventListener("scroll", function () {
+            var header = document.getElementById("header");
+            var scrollPosition = window.scrollY;
+
+            if (scrollPosition > 0) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        });
+
+
+        $(".header-burger").click(function () {
+            $(".header-burger").toggleClass("active");
+            $(".header-links").slideToggle(200);
+        });
+    </script>
+
+</body>
+
+</html>
